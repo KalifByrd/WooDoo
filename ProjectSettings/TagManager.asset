@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Starfolk
+  - Speaking
+  - Skin
+  - Void
+  - SwimWater
+  - SwimTrigger
+  - Ledge Checker
+  - Hill
+  - StandPos
+  - Grass
+  - Tree
+  - Twig
+  - Pebble
+  - Rock
+  - CraftingSlot
+  - ResultSlot
+  - PickUp
+  - Tool
+  - Wood
+  - Item
+  - MouseIndicator
+  - ToolSlot
+  - Building
+  - SimpleHome
+  - Stone
+  - Iron
+  - Wool
+  - SimpleShears
+  - SimpleBed
+  - PlayerFloor
+  - StarfolkHome
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - UI Plus
+  - Water
+  - UI
+  - WaterTerrain
+  - HillTerrain
+  - Grass
+  - PlayerFloor
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

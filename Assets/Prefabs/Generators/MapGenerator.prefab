@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2921874853367909832
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2921874853367909834}
+  - component: {fileID: 2921874853367909835}
+  - component: {fileID: 2921874853367909837}
+  m_Layer: 0
+  m_Name: MapGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2921874853367909834
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2921874853367909832}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.205572, y: 2.215193, z: -7.0870886}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2921874853367909835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2921874853367909832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867c903e55cd42745834554ac1bd2691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetX: 0
+  offsetY: 0
+  mapRenderer: {fileID: 2921874853367909837}
+  grassTile: {fileID: 11400000, guid: 2ee0b51ce3a9d5249a64ad76083407d9, type: 2}
+  waterTile: {fileID: 11400000, guid: e22127703c8874b4092dbe2e795971e0, type: 2}
+  firstHillTile: {fileID: 11400000, guid: 9fcddac75246c40478376e787740fd7c, type: 2}
+  secondHillTile: {fileID: 11400000, guid: 68fd78da04875b64d8e68be2aa7fbf5f, type: 2}
+  maxPosTile: {fileID: 11400000, guid: 39c35b02db6512642b624bc512eb47d7, type: 2}
+  mapSize: 60
+  mapSettings:
+    octaves: 1
+    startFrequency: 0.09
+    persistance: 0.33
+  firstHillHeight: 0.5
+  secondHillHeight: 0.7
+  waterHeight: 0.25
+--- !u!114 &2921874853367909837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2921874853367909832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa4c981c37f5a4409491cc814978966, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  map: {fileID: 0}

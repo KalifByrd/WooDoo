@@ -1,0 +1,61 @@
+# =============== #
+# Unity generated #
+# =============== #
+Temp/
+Obj/
+UnityGenerated/
+Library/
+Logs/
+MemoryCaptures/
+Build/
+Builds/
+ExportedObj/
+Packages/com.unity.package-manager*
+Packages/manifest.json
+UserSettings/
+.vscode/
+
+# =========================== #
+# OS generated files #
+# =========================== #
+.DS_Store
+Thumbs.db
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+.vscode/
+.vscode/settings.json
+.vscode/Launch.json
+.vscode/Tasks.json
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.obj
+*.svd.meta
+
+# ================================= #
+# Unity3D generated file #
+# ================================= #
+*.apk
+*.aab
+*.unitypackage
+
+# ==================== #
+# Crashlytics generated #
+# ==================== #
+crashlytics-build.properties
+crashlytics.properties
+com.crashlytics.ios/
+fabric/
