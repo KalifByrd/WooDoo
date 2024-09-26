@@ -28,35 +28,39 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Transform eigthObjectCraftingSlot;
     public Transform ninthObjectCraftingSlot;
     public Transform tenthObjectCraftingSlot;
+
+    private GameObject player;
     
 
     public GameObject item;
     void Start()
     {
-        playerUICanvas = GameObject.Find("PlayerUICanvas");
-        craftingResultParent = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(5).GetChild(0);
-        firstCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(1).GetChild(0);
-        secondCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(2).GetChild(0);
-        thirdCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(3).GetChild(0);
-        fourthCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(4).GetChild(0);
+        player = PlayerReference.player;
+        // un comment later
+        // playerUICanvas = GameObject.Find("PlayerUICanvas");
+        // craftingResultParent = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(5).GetChild(0);
+        // firstCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(1).GetChild(0);
+        // secondCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(2).GetChild(0);
+        // thirdCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(3).GetChild(0);
+        // fourthCraftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(4).GetChild(0);
 
-        objectCraftingResultParent = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(10).GetChild(0);
-        firstObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(0);
-        secondObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(1).GetChild(0);
-        thirdObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(2).GetChild(0);
-        fourthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(3).GetChild(0);
-        fifthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(4).GetChild(0);
-        sixthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(5).GetChild(0);
-        seventhObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(6).GetChild(0);
-        eigthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(7).GetChild(0);
-        ninthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(8).GetChild(0);
-        tenthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(9).GetChild(0);
+        // objectCraftingResultParent = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(10).GetChild(0);
+        // firstObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(0);
+        // secondObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(1).GetChild(0);
+        // thirdObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(2).GetChild(0);
+        // fourthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(3).GetChild(0);
+        // fifthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(4).GetChild(0);
+        // sixthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(5).GetChild(0);
+        // seventhObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(6).GetChild(0);
+        // eigthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(7).GetChild(0);
+        // ninthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(8).GetChild(0);
+        // tenthObjectCraftingSlot = GameObject.Find("GameManager").transform.GetChild(3).GetChild(1).GetChild(9).GetChild(0);
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         Debug.Log("Begin Drag");
         parentAfterDrag = transform.parent;
-        transform.SetParent(playerUICanvas.transform);
+        transform.SetParent(player.transform.Find("PlayerUI/PlayerUICanvas"));
         transform.SetAsLastSibling();
         image.raycastTarget = false;
         //if(GameObject.Find("GridParent").transform.GetChild(0).)

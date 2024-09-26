@@ -8,8 +8,9 @@ public class Water : MonoBehaviour
     public GameObject player;
     void Start()
     {
-        animationAndMovementController = GameObject.Find("Player").GetComponent<AnimationAndMovementController>();
-        player = GameObject.Find("Player");
+        player = PlayerReference.player;
+        animationAndMovementController = player.GetComponent<AnimationAndMovementController>();
+        
     }
     void OnTriggerEnter(Collider other)
     {

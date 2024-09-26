@@ -185,17 +185,17 @@ public class AnimationAndMovementController : MonoBehaviour
             animator.SetBool("SwimExit", false);
         }
         
-        if(isCastingSpellPressed && (playerTags.HasTag("EarthAligned") || playerTags.HasTag("AirAligned") || playerTags.HasTag("FireAligned") || playerTags.HasTag("WaterAligned")))
-        {
-            animator.SetBool("IsCastingSpell", true);
+        // if(isCastingSpellPressed && (playerTags.HasTag("EarthAligned") || playerTags.HasTag("AirAligned") || playerTags.HasTag("FireAligned") || playerTags.HasTag("WaterAligned")))
+        // {
+        //     animator.SetBool("IsCastingSpell", true);
             
-            isCastingSpellPressed = false;
+        //     isCastingSpellPressed = false;
             
-        }
-        else if(!isCastingSpellPressed)
-        {
-            animator.SetBool("IsCastingSpell", false);
-        }
+        // }
+        // else if(!isCastingSpellPressed)
+        // {
+        //     animator.SetBool("IsCastingSpell", false);
+        // }
 
         if((isMovementPressed && isRunPressed) && !isRunning)
         {

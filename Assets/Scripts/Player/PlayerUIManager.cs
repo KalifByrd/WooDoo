@@ -29,6 +29,7 @@ public class PlayerUIManager : MonoBehaviour
     public TextMeshProUGUI craftingGuideDescriptionTitleText;
     public TextMeshProUGUI craftingGuideDescriptionText;
     public CraftingGuideButtons craftingGuideButtons;
+    public GameManager gameManager;
 
     void Awake()
     {
@@ -39,8 +40,9 @@ public class PlayerUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = gameObject.GetComponent<GameManager>();
         isKeyPressEnabled = true;
-        player = GameObject.Find("Player");
+        player = gameManager.newPlayerObject;
         
     }
     void onInventoryInput(InputAction.CallbackContext context)

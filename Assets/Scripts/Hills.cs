@@ -15,8 +15,9 @@ public class Hills : MonoBehaviour
     
     void Start()
     {
-        animationAndMovementController = GameObject.Find("Player").GetComponent<AnimationAndMovementController>();
-        player = GameObject.Find("Player");
+        player = PlayerReference.player;
+        animationAndMovementController = player.GetComponent<AnimationAndMovementController>();
+        
         //animationAndMovementController.newHandPos = new Vector3(_handPosition.position.x, _handPosition.position.y - yOffset, _handPosition.position.z);
     }
     void OnTriggerEnter(Collider other)

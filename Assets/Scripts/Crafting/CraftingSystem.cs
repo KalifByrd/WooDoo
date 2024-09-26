@@ -17,19 +17,23 @@ public class CraftingSystem : MonoBehaviour
     [SerializeField] private GameObject currentCraftingSlotIcon;
     void Start()
     {
-        simpleToolRecipeScript = gameObject.GetComponent<SimpleToolRecipe>();
-        simpleToolRecipe = simpleToolRecipeScript.simpleTool;
+        // just for now comment out
+        // un comment later
+        // simpleToolRecipeScript = gameObject.GetComponent<SimpleToolRecipe>();
+        // simpleToolRecipe = simpleToolRecipeScript.simpleTool;
 
-        simpleCraftingTableRecipeScript = gameObject.GetComponent<SimpleCraftingTableRecipe>();
-        simpleCraftingTableRecipe = simpleCraftingTableRecipeScript.simpleCraftingTable;
+        // simpleCraftingTableRecipeScript = gameObject.GetComponent<SimpleCraftingTableRecipe>();
+        // simpleCraftingTableRecipe = simpleCraftingTableRecipeScript.simpleCraftingTable;
 
-        inventoryCraftingRecipes.Add(simpleToolRecipe);
-        ourRecipes.Add(simpleToolRecipeScript);
+        // inventoryCraftingRecipes.Add(simpleToolRecipe);
+        // ourRecipes.Add(simpleToolRecipeScript);
 
-        inventoryCraftingRecipes.Add(simpleCraftingTableRecipe);
-        ourRecipes.Add(simpleCraftingTableRecipeScript);
+        // inventoryCraftingRecipes.Add(simpleCraftingTableRecipe);
+        // ourRecipes.Add(simpleCraftingTableRecipeScript);
 
-        craftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(1).GetChild(0).gameObject.GetComponent<CraftingSlot>();
+        // craftingSlot = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(1).GetChild(0).gameObject.GetComponent<CraftingSlot>();
+
+        //always been commented out
         //craftingSlots = craftingSlot.craftingSlots;
     }
     public bool SearchInventoryCraftingRecipes()

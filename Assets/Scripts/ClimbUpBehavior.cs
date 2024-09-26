@@ -7,7 +7,7 @@ public class ClimbUpBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        var player = GameObject.Find("Player").GetComponent<AnimationAndMovementController>();
+        var player = PlayerReference.player.GetComponent<AnimationAndMovementController>();
         player.movementDisabled = true;
         //  player.gameObject.transform.position += player.gameObject.transform.forward * 1f;
         //  player.gameObject.transform.position = new Vector3(player.gameObject.transform.position.x, player.gameObject.transform.position.y + 1.7f, player.gameObject.transform.position.z);
@@ -24,7 +24,7 @@ public class ClimbUpBehavior : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machiwne finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       var player = GameObject.Find("Player").GetComponent<AnimationAndMovementController>();
+       var player = PlayerReference.player.GetComponent<AnimationAndMovementController>();
        player.swimExitTriggered = false;
        player.swimTriggered = false;
        player.gameObject.SetActive(false);

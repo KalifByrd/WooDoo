@@ -4,12 +4,18 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
     public IslandSceneManager islandSceneManager;
     public IslandSceneManager homeSceneManager;
     public ColorPicker colorPicker;
+    public ColorPicker noseColorPicker;
+    public ColorPicker hairColorPicker;
+    public ColorPicker eyebrowsColorPicker;
+    public ColorPicker detailsColorPicker;
+    public ColorPicker cheeksColorPicker;
     [Header("Canvases")]
     public GameObject canvas;
 
@@ -44,11 +50,11 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private GameObject[] starfolk;
 
     [SerializeField]
-    private GameObject Whisper;
+    public GameObject Whisper;
     [SerializeField]
-    private GameObject DialogueBubble;
+    public GameObject DialogueBubble;
     [SerializeField]
-    private GameObject Vail;
+    public GameObject Vail;
     public int current = 1;
     private string[] currentDialogue;
     private GameObject currentVail;
@@ -106,6 +112,39 @@ public class GameManager : Singleton<GameManager>
     public bool isStarfolkHomeIniciated = false;
     public StartManager startManager;
 
+    public string selectedHairIcon = "";
+    public string selectedNoseIcon = "";
+    public string selectedEyebrowIcon = "";
+    public string selectedCheeksIcon = "";
+    public string selectedDetailsIcon = "";
+
+    public Image afroSpaceBunsIcon;
+    public Image blackVictorianIcon;
+    public Image buttCutIcon;
+    public Image heartNoseIcon;
+
+    //public Material afroSpaceBunsMaterial;
+    //public Material blackVictorianMaterial;
+    public GameObject newPlayer;
+    public CharacterController playerController;
+    public GameObject newPlayerObject;
+    public AnimationAndMovementController newPlayerMovementController;
+
+    //private MaterialPropertyBlock propertyBlock;
+
+    public Material testMaterial;
+
+    public InterfaceManager ui;
+    public GameObject nameSelection;
+    public TMP_InputField playerNameInputField;
+    public PlayerManager playerManager;
+    public DialogueData whisperIntro2Dialogue;
+    public InterfaceManager interfaceManager;
+    
+
+
+    
+
    
 
   
@@ -117,7 +156,8 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        //DontDestroyOnLoad(newPlayer);
+        ui = InterfaceManager.instance;
         InitiateEnviornment();
     }
 
@@ -126,9 +166,9 @@ public class GameManager : Singleton<GameManager>
         startManager.dontDestroyOnLoad.Add(gameObject);
         startManager.dontDestroyOnLoad.Add(startManager.gameObject);
         TerrainGenerator terrainGenerator = GameObject.Find("TerrainGenerator").GetComponent<TerrainGenerator>();
-        playerObject.transform.position = new Vector3(5f, 5f, 5f);
+        //playerObject.transform.position = new Vector3(5f, 5f, 5f);
         terrainGenerator.worldTiles.transform.position = new Vector3(terrainGenerator.worldTiles.transform.position.x, -1000f, terrainGenerator.worldTiles.transform.position.y);
-        playerObject.SetActive(true);
+        //playerObject.SetActive(true);
         playerCamera.SetActive(true);
         islandBoarder.SetActive(true);
         beach.SetActive(true);
@@ -137,6 +177,10 @@ public class GameManager : Singleton<GameManager>
         GameObject islandSelection = GameObject.Find("UIcanvas");
         islandSelection.SetActive(false);
         playerUI.SetActive(true);
+
+        newPlayerObject.transform.position = new Vector3(5f, 5f, 5f);
+        newPlayerObject.SetActive(true);
+
 
         gameObject.GetComponent<PlayerUIManager>().enabled = true;
         gameObject.GetComponent<PlayerUIManager>().inventory.SetActive(false);
@@ -173,33 +217,33 @@ public class GameManager : Singleton<GameManager>
             }
         }
     }
-    public void KiwisHome1Btn()
-    {
-        if(isStarfolkHomeOnIsland)
-        {
-            starfolkOnIsland.GetComponent<Starfolk>().home = starfolkHomeToBeAssigned.transform.parent.gameObject;
-            starfolkOnIsland.transform.position = starfolkHomeToBeAssigned.transform.position;
-            starfolkOnIsland.GetComponent<BoxCollider>().enabled = false;
-            kiwiFirstHomeTaskObj.SetActive(false);
-            starfolkOnIsland.GetComponent<Starfolk>().isFirstHomeTaskComplete = true;
-            playerObject.SetActive(false);
-            playerObject.transform.position = new Vector3(starfolkOnIsland.transform.position.x + 1f, starfolkOnIsland.transform.position.y, starfolkOnIsland.transform.position.z);
-            playerObject.SetActive(true);
-            gameObject.GetComponent<PlayerUIManager>().enabled = false;
-            player.enabled = false;
-            playerMovementController.enabled = false;
-            starfolkOnIsland.GetComponent<CustomTag>().AddTag("Speaking");
-            taskBookUI.SetActive(false);
-            isStarfolkHomeIniciated = false;
+    // public void KiwisHome1Btn()
+    // {
+    //     if(isStarfolkHomeOnIsland)
+    //     {
+    //         starfolkOnIsland.GetComponent<Starfolk>().home = starfolkHomeToBeAssigned.transform.parent.gameObject;
+    //         starfolkOnIsland.transform.position = starfolkHomeToBeAssigned.transform.position;
+    //         starfolkOnIsland.GetComponent<BoxCollider>().enabled = false;
+    //         kiwiFirstHomeTaskObj.SetActive(false);
+    //         starfolkOnIsland.GetComponent<Starfolk>().isFirstHomeTaskComplete = true;
+    //         playerObject.SetActive(false);
+    //         playerObject.transform.position = new Vector3(starfolkOnIsland.transform.position.x + 1f, starfolkOnIsland.transform.position.y, starfolkOnIsland.transform.position.z);
+    //         playerObject.SetActive(true);
+    //         gameObject.GetComponent<PlayerUIManager>().enabled = false;
+    //         player.enabled = false;
+    //         playerMovementController.enabled = false;
+    //         starfolkOnIsland.GetComponent<CustomTag>().AddTag("Speaking");
+    //         taskBookUI.SetActive(false);
+    //         isStarfolkHomeIniciated = false;
 
-            SetSpeakerNameDisplayText(starfolkOnIsland);
+    //         SetSpeakerNameDisplayText(starfolkOnIsland);
 
-            isDemoSequence = true;
-            DialogueBubble.SetActive(true);
-            StartDialogue(starfolkOnIsland.GetComponent<Starfolk>().CompleteFirstHomeDialogue1());
+    //         isDemoSequence = true;
+    //         DialogueBubble.SetActive(true);
+    //         StartDialogue(starfolkOnIsland.GetComponent<Starfolk>().CompleteFirstHomeDialogue1());
             
-        }
-    }
+    //     }
+    // }
     public void ResetGame()
     {
         LoadEnvironment("StartScreen");
@@ -237,11 +281,18 @@ public class GameManager : Singleton<GameManager>
         
         currentEnvironmentIndex = SceneManager.GetActiveScene().buildIndex;
         currentEnvironmentName = SceneManager.GetActiveScene().name;
-        playerObject = GameObject.FindGameObjectWithTag("Player");
-        player = playerObject.GetComponent<CharacterController>();
-        playerMovementController = playerObject.GetComponent<AnimationAndMovementController>();
+
+        //playerObject = GameObject.FindGameObjectWithTag("Player");
+        //player = playerObject.GetComponent<CharacterController>();
+        //playerMovementController = playerObject.GetComponent<AnimationAndMovementController>();
+
+        newPlayerObject = GameObject.FindGameObjectWithTag("Player");
+        playerController = newPlayerObject.GetComponent<CharacterController>();
+        newPlayerMovementController = newPlayerObject.GetComponent<AnimationAndMovementController>();
+
+
         
-        playerSkin = CheckAllChildren(playerObject, "Skin", playerSkin);
+        //playerSkin = CheckAllChildren(playerObject, "Skin", playerSkin);
         canvas = GameObject.FindGameObjectWithTag("Void");
         Debug.Log(canvas);
 
@@ -255,21 +306,38 @@ public class GameManager : Singleton<GameManager>
         }
         if(currentEnvironmentName == "Void")
         {
+            //DontDestroyOnLoad(Whisper);
+            Debug.Log("in the void");
             gameObject.GetComponent<PlayerUIManager>().enabled = false;
             
             playerUI.SetActive(false);
             
-            playerObject.AddComponent<RotatePlayer>();
+            //playerObject.AddComponent<RotatePlayer>();
+
             currentVail = Vail;
             playerCreationWindow = GameObject.Find("PlayerCreation");
             Whisper.GetComponent<CustomTag>().AddTag("Speaking");
             isDialogue = true;
-            player.enabled = false;
-            playerMovementController.enabled = false;
+
+            //player.enabled = false;
+            //playerMovementController.enabled = false;
+
+
+            newPlayerObject.AddComponent<RotatePlayer>();
+            playerController.enabled = false;
+            newPlayerMovementController.enabled = false;
             Wait(1);
+            Debug.Log("under the wait");
             SetSpeakerNameDisplayText(Whisper);
 
             StartDialogue(Whisper.GetComponent<Whisper>().IntroDialogue());
+            ui.currentStarfolk = Whisper.GetComponent<Starfolk>();
+            ui.SetCharNameAndColor();
+            ui.inDialogue = true;
+            ui.ClearText();
+            ui.FadeUI(true, .2f, .65f);
+
+            Debug.Log(currentDialogue);
             
         }
         if(currentEnvironmentName == "Island")
@@ -290,12 +358,20 @@ public class GameManager : Singleton<GameManager>
             
             if(!isIslandStarted)
             {
-                player.enabled = true;
-                playerMovementController.enabled = true;
-                Destroy(playerObject.GetComponent<RotatePlayer>());
-                playerObject.SetActive(false);
+                //player.enabled = true;
+                //playerMovementController.enabled = true;
+                //Destroy(playerObject.GetComponent<RotatePlayer>());
+                //playerObject.SetActive(false);
+                
+
+                playerController.enabled = true;
+                newPlayerMovementController.enabled = true;
+                Destroy(newPlayerObject.GetComponent<RotatePlayer>());
+                newPlayerObject.SetActive(false);
+
                 playerCamera = GameObject.Find("Main Camera");
                 playerCamera.SetActive(false);
+                
                 islandBoarder = GameObject.Find("beachy");
                 islandBoarder.SetActive(false);
                 beach = GameObject.Find("BeachTides");
@@ -428,6 +504,9 @@ public class GameManager : Singleton<GameManager>
 
     public void NextDialogue()
     {
+        Debug.Log("current: " + current);
+        Debug.Log("Length: " + currentDialogue.Length);
+        Debug.Log(currentDialogue);
         if(current == currentDialogue.Length)
         {
             DialogueBubble.SetActive(false);
@@ -491,26 +570,141 @@ public class GameManager : Singleton<GameManager>
         yield return new WaitForSeconds(n);
     }
 
+    public void ChangeEyebrowsColor()
+    {
+        GameObject body = newPlayer.transform.GetChild(0).gameObject;
+        Renderer renderer = body.GetComponent<Renderer>();
+        Material eyebrows = renderer.sharedMaterials[5];
+        
+        eyebrows.SetColor("_BaseColor", eyebrowsColorPicker.output);
+    }
+    public void ChangeDetailsColor()
+    {
+        GameObject body = newPlayer.transform.GetChild(0).gameObject;
+        Renderer renderer = body.GetComponent<Renderer>();
+        Material details = renderer.sharedMaterials[4];
+        
+        details.SetColor("_BaseColor", detailsColorPicker.output);
+    }
+    public void ChangeCheeksColor()
+    {
+        GameObject body = newPlayer.transform.GetChild(0).gameObject;
+        Renderer renderer = body.GetComponent<Renderer>();
+        Material cheeks = renderer.sharedMaterials[3];
+        
+        cheeks.SetColor("_BaseColor", cheeksColorPicker.output);
+    }
+
     public void ChangeSkinColor()
     {
-        foreach(GameObject o in playerSkin)
-        {
-            o.GetComponent<Renderer>().material.SetColor("_BaseColor", colorPicker.output);
-        }
+        //propertyBlock = new MaterialPropertyBlock();
+        GameObject body = newPlayer.transform.GetChild(0).gameObject;
+        Renderer renderer = body.GetComponent<Renderer>();
+        //renderer.GetPropertyBlock(propertyBlock);
+        Material skin = renderer.sharedMaterials[0];
+        testMaterial = skin;
+
+        
+        skin.SetColor("_BaseColor", colorPicker.output);
+        //renderer.SetPropertyBlock(propertyBlock);
         //playerSkin.SetColor("_BaseColor", colorPicker.output);
     }
+    public void ChangeHairIconColor()
+    {
+        GameObject currentHair = newPlayer.GetComponent<Equipment>().wornHair;
+        if( currentHair!= null)
+        {
+            
+            Renderer renderer = currentHair.GetComponent<Renderer>();
+            if(renderer != null)
+            {
+                
+                Material[] materials = renderer.materials;
+
+                foreach(Material material in materials)
+                {
+                    
+                    material.SetColor("_BaseColor", hairColorPicker.output);
+                }
+            }
+            if(selectedHairIcon == "HAIR_AfroSpaceBuns")
+            {
+                
+                afroSpaceBunsIcon.color = hairColorPicker.output;
+                //afroSpaceBunsMaterial.SetColor("_BaseColor", hairColorPicker.output);
+            }
+            if(selectedHairIcon == "HAIR_BlackVictorian")
+            {
+                
+                blackVictorianIcon.color = hairColorPicker.output;
+                //blackVictorianMaterial.SetColor("_BaseColor", hairColorPicker.output);
+            }
+            if(selectedHairIcon == "HAIR_ButtCut")
+            {
+                
+                buttCutIcon.color = hairColorPicker.output;
+                //blackVictorianMaterial.SetColor("_BaseColor", hairColorPicker.output);
+            }
+        }
+        
+    }
+    public void ChangeNoseIconColor()
+    {
+        GameObject currentNose = newPlayer.GetComponent<Equipment>().wornNose;
+        if( currentNose!= null)
+        {
+            
+            Renderer renderer = currentNose.GetComponent<Renderer>();
+            if(renderer != null)
+            {
+                
+                Material[] materials = renderer.materials;
+
+                foreach(Material material in materials)
+                {
+                    
+                    material.SetColor("_BaseColor", noseColorPicker.output);
+                }
+            }
+            if(selectedNoseIcon == "NOSE_Heart")
+            {
+                
+                heartNoseIcon.color = noseColorPicker.output;
+                //afroSpaceBunsMaterial.SetColor("_BaseColor", hairColorPicker.output);
+            }
+            // if(selectedNoseIcon == "HAIR_BlackVictorian")
+            // {
+                
+            //     blackVictorianIcon.color = hairColorPicker.output;
+            //     //blackVictorianMaterial.SetColor("_BaseColor", hairColorPicker.output);
+            // }
+        }
+        
+    }
+
+    
 
     public void DoneBtn()
     {
-        player.enabled = true;
-        playerMovementController.enabled = true;
-        //playerCharacter = GameObject.FindGameObjectWithTag("Player");
-        Destroy(playerObject.GetComponent<RotatePlayer>());
-        DontDestroyOnLoad(playerObject);
-        startManager.dontDestroyOnLoad.Add(playerObject);
+        //player.enabled = true;
+        //playerMovementController.enabled = true;
+        
+        //Destroy(playerObject.GetComponent<RotatePlayer>());
+        //DontDestroyOnLoad(playerObject);
+        //startManager.dontDestroyOnLoad.Add(playerObject);
         DontDestroyOnLoad(starfolkParent);
         startManager.dontDestroyOnLoad.Add(starfolkParent);
+
+        playerController.enabled = true;
+        newPlayerMovementController.enabled = true;
+        Destroy(newPlayerObject.GetComponent<RotatePlayer>());
+        DontDestroyOnLoad(newPlayerObject);
+        startManager.dontDestroyOnLoad.Add(newPlayerObject);
+
         LoadEnvironment("Island");
+
+        
+        
     }
     
     
@@ -603,6 +797,34 @@ public class GameManager : Singleton<GameManager>
         GameObject[] rootGameObjects = scene.GetRootGameObjects(); 
         return rootGameObjects[gameObjectIndex];
     }
+
+    public GameObject GetChildWithTag(Transform parent, string tag)
+    {
+        for(int i = 0; i < parent.childCount; i++)
+        {
+            GameObject child = parent.GetChild(i).gameObject;
+            if(child.CompareTag(tag))
+            {
+                return child;
+            }
+        }
+        return null;
+    }
+
+    public void AcceptPlayerNameBtn()
+    {
+        playerManager = newPlayer.GetComponent<PlayerManager>();
+        playerManager.playerName = playerNameInputField.text;
+        Whisper.GetComponent<Starfolk>().dialogue = whisperIntro2Dialogue;
+        nameSelection.SetActive(false);
+        ui.currentStarfolk = Whisper.GetComponent<Starfolk>();
+        ui.SetCharNameAndColor();
+        ui.inDialogue = true;
+        ui.ClearText();
+        ui.FadeUI(true, .2f, .65f);
+    }
+
+    
 
     public void CraftingGuideBtn()
     {

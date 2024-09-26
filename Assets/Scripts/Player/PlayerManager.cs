@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public Camera cam;
+    public string playerName;
+    public int birthMonth;
+    public int birthDay;
+    public string birthDate;
+    public string starSign;
 
     private Vector3 destination;
     public GameObject airProjectile;
@@ -14,14 +19,14 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] int offSetPercent;
     
 
-    void Awake()
-    {
-        airProjectile = GameObject.Find("AirProjcetile");
-        airProjectile.SetActive(false);
+    // void Awake()
+    // {
+    //     airProjectile = GameObject.Find("AirProjcetile");
+    //     airProjectile.SetActive(false);
 
-        fireProjectile = GameObject.Find("FireProjectile");
-        fireProjectile.SetActive(false);
-    }
+    //     fireProjectile = GameObject.Find("FireProjectile");
+    //     fireProjectile.SetActive(false);
+    // }
     // Start is called before the first frame update
     void Start()
     {

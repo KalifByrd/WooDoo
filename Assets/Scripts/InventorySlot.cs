@@ -31,9 +31,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void InitiateInventory()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        player = GameObject.Find("Player");
-        itemOptions = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(6).gameObject;
-        prop = playerHand.GetChild(6);
+        player = PlayerReference.player;
+        itemOptions = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/ItemOptions").gameObject;
+        // player.transform.GetChild(5).GetChild(0).GetChild(1).GetChild(6).gameObject
+        //prop = playerHand.GetChild(6);
         holdItemBtn = itemOptions.transform.GetChild(0).gameObject.GetComponent<Button>();
         deleteItemBtn = itemOptions.transform.GetChild(1).gameObject.GetComponent<Button>();
         placeItemBtn = itemOptions.transform.GetChild(2).gameObject.GetComponent<Button>();

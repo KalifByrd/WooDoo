@@ -415,6 +415,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7910574593615128353}
   - {fileID: 5614296145714292980}
   - {fileID: 5614296146108864664}
   m_Father: {fileID: 5614296146292254979}
@@ -1190,7 +1191,7 @@ RectTransform:
   m_Children:
   - {fileID: 5614296145538695547}
   m_Father: {fileID: 5614296144617787186}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1499,7 +1500,7 @@ RectTransform:
   - {fileID: 5614296146422276261}
   - {fileID: 4905116566398042699}
   m_Father: {fileID: 5614296144617787186}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2457,6 +2458,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5a82a67fcb978479eceda64ec856c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  islandSceneManager: {fileID: 0}
+  homeSceneManager: {fileID: 0}
   colorPicker: {fileID: 5614296145538695544}
   canvas: {fileID: 0}
   currentEnvironmentIndex: 0
@@ -2468,15 +2471,50 @@ MonoBehaviour:
   dialogueDisplay: {fileID: 5614296145357326457}
   speakerNameDisplay: {fileID: 5614296144622642424}
   rotationSpeed: 1
+  numStarfolkTotal: 0
+  starfolkToAdd: {fileID: 0}
+  starfolkParent: {fileID: 0}
+  starfolk: []
   Whisper: {fileID: 0}
   DialogueBubble: {fileID: 5614296145624489166}
   Vail: {fileID: 5614296146419562250}
+  current: 1
   playerCamera: {fileID: 0}
   beach: {fileID: 0}
   islandBoarder: {fileID: 0}
   overViewCamera: {fileID: 0}
   playerUI: {fileID: 0}
+  NavMesh: {fileID: 0}
   playerInventory: {fileID: 0}
+  pickUpUI: {fileID: 0}
+  craftingGuideCanvas: {fileID: 0}
+  buildingUICanvasActivater: {fileID: 0}
+  isIslandStarted: 0
+  isHomeStarted: 0
+  playerIslandSave: {fileID: 0}
+  playerHomeSave: {fileID: 0}
+  previousePlayerHomeSave: {fileID: 0}
+  playerHouseExitPoint: {x: 0, y: 0, z: 0}
+  currentPlayerHome: {fileID: 0}
+  previousePlayerHomeIndex: 0
+  clockUI: {fileID: 0}
+  timeManagerObject: {fileID: 0}
+  timeManager: {fileID: 0}
+  playerHasBuiltHouse: 0
+  southStarfolkLocation: {fileID: 0}
+  broadcast: {fileID: 0}
+  boradcastText: {fileID: 0}
+  taskBookUI: {fileID: 0}
+  settingsUI: {fileID: 0}
+  playerInventoryObj: {fileID: 0}
+  kiwiFirstHomeTaskObj: {fileID: 0}
+  craftingGuideUIStarfolkHomeBtn: {fileID: 0}
+  isStarfolkHomeOnIsland: 0
+  starfolkHomeToBeAssigned: {fileID: 0}
+  starfolkOnIsland: {fileID: 0}
+  endDemo: {fileID: 0}
+  isStarfolkHomeIniciated: 0
+  startManager: {fileID: 0}
 --- !u!114 &5614296146492784267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2624,6 +2662,82 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &7698796114955652265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7910574593615128353}
+  - component: {fileID: 1971280848968778042}
+  - component: {fileID: 5672329428120850070}
+  m_Layer: 5
+  m_Name: pcbg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7910574593615128353
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698796114955652265}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5614296144617787186}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -210.9241, y: -2.3552}
+  m_SizeDelta: {x: 794.1519, y: 446.7103}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1971280848968778042
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698796114955652265}
+  m_CullTransparentMesh: 1
+--- !u!114 &5672329428120850070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698796114955652265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d50c3b8a8c9dbb94184bf6df1abfde08, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8279077164514725189
 GameObject:
   m_ObjectHideFlags: 0

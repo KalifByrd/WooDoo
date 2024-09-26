@@ -37,6 +37,8 @@ public class FloraGenerator : MonoBehaviour
     private int twigLoop = 0;
     private int pebbleLoop = 0;
     private int count = 0;
+
+    private GameObject player;
     private GameObject playerIslandParent;
 
     public GameManager gameManager;
@@ -49,11 +51,13 @@ public class FloraGenerator : MonoBehaviour
         worldTiles = gameObject.GetComponent<TerrainGenerator>().worldTiles;
         terrainTiles = gameObject.GetComponent<TerrainGenerator>().terrainTiles;
         playerIslandParent = GameObject.Find("PlayerIslandParent");
+        player = gameManager.newPlayerObject;
     }
 
     public void GenerateFlora()
     {
-
+        Debug.Log("our player:" + player.name);
+        Debug.Log("our slots:" + player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject.name);
         foreach(Transform child in terrainTiles.transform)
         {
             if(child.gameObject.tag == "Grass")
@@ -68,7 +72,7 @@ public class FloraGenerator : MonoBehaviour
             GameObject ourTree = Instantiate(tree, new Vector3(currentTerrain.transform.position.x, currentTerrain.transform.position.y +0.51f, currentTerrain.transform.position.z), Quaternion.Euler(0,-90,0));
             ourTree.transform.parent = treeParent.transform;
             ourTree.GetComponent<Tree>().woodParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(6);
-            ourTree.GetComponent<Tree>().wood.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
+            ourTree.GetComponent<Tree>().wood.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
         }
         // gameManager.Wait(1);
         // foreach(Transform child in beenUsed.transform)
@@ -84,7 +88,7 @@ public class FloraGenerator : MonoBehaviour
             currentTree.transform.parent = beenUsed.transform;
             GameObject currentTwig = Instantiate(twig, new Vector3(currentTree.transform.position.x - 0.256f, currentTree.transform.position.y -0.73f, currentTree.transform.position.z + 0.926f), Quaternion.identity);
             currentTwig.transform.parent = twigParent.transform;
-            currentTwig.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
+            currentTwig.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
         }
         // gameManager.Wait(90);
         // foreach(Transform child in beenUsed.transform)
@@ -106,8 +110,8 @@ public class FloraGenerator : MonoBehaviour
                 ourRock1.transform.parent = rockParent.transform;
                 ourRock1.GetComponent<Rock>().stoneParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(7);
                 ourRock1.GetComponent<Rock>().ironParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(9);
-                ourRock1.GetComponent<Rock>().stone.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
-                ourRock1.GetComponent<Rock>().iron.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
+                ourRock1.GetComponent<Rock>().stone.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
+                ourRock1.GetComponent<Rock>().iron.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
             }
             else
             {
@@ -115,8 +119,8 @@ public class FloraGenerator : MonoBehaviour
                 ourRock2.transform.parent = rockParent.transform;
                 ourRock2.GetComponent<Rock>().stoneParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(7);
                 ourRock2.GetComponent<Rock>().ironParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(9);
-                ourRock2.GetComponent<Rock>().stone.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
-                ourRock2.GetComponent<Rock>().iron.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
+                ourRock2.GetComponent<Rock>().stone.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
+                ourRock2.GetComponent<Rock>().iron.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
             }
 
         }
@@ -127,7 +131,7 @@ public class FloraGenerator : MonoBehaviour
             currentTerrain.transform.parent = beenUsed.transform;
             GameObject currentPebble = Instantiate(pebble, new Vector3(currentTerrain.transform.position.x, currentTerrain.transform.position.y + 0.5191f, currentTerrain.transform.position.z), Quaternion.identity);
             currentPebble.transform.parent = pebbleParent.transform;
-            currentPebble.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
+            currentPebble.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
         }
         
     }
@@ -182,9 +186,9 @@ public class FloraGenerator : MonoBehaviour
                 sheepOne.GetComponent<ShearSheep>().woolParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(8);
                 sheepTwo.GetComponent<ShearSheep>().woolParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(8);
                 sheepThree.GetComponent<ShearSheep>().woolParent = GameObject.Find("TerrainGrid").transform.GetChild(0).GetChild(8);
-                sheepOne.GetComponent<ShearSheep>().wool.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
-                sheepTwo.GetComponent<ShearSheep>().wool.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
-                sheepThree.GetComponent<ShearSheep>().wool.GetComponent<PickUps>().inventorySlots = GameObject.Find("Player").transform.GetChild(5).GetChild(0).GetChild(1).GetChild(0).GetChild(0).gameObject;
+                sheepOne.GetComponent<ShearSheep>().wool.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
+                sheepTwo.GetComponent<ShearSheep>().wool.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
+                sheepThree.GetComponent<ShearSheep>().wool.GetComponent<PickUps>().inventorySlots = player.transform.Find("PlayerUI/PlayerUICanvas/Inventory/InventoryBackground/Slots").gameObject;
                 continue;
             }
             j--;

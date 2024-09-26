@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fae1e7a2a7bb4248b01cb4a0fdffe49, type: 3}
+  m_Name: Intro 1
+  m_EditorClassIdentifier: 
+  conversationBlock:
+  - <speed=50>Hello.<options=next>
+  - <options=hide><speed=30>Once again, <pause=.5>you find yourself in the void.<options=next>
+  - <options=hide><speed=30>Rest assured, <pause=.5>we have all been here.<options=next>
+  - <options=hide><speed=30>As we are all a part of the universe, <pause=.5>which
+    makes us<speed=3> . . . <pause=.5><speed=5>well, <speed=30><size=130%>THE UNIVERSE!<options=next>
+  - <options=hide><speed=30>Observe me as I observe you, <pause=.5>a cosmic dance
+    of perception. <pause=.9>The universe observes itself. <pause=.9>Isn't it mind-boggling?<options=next>
+  - <options=hide><speed=3><size=200%>. . .<options=next>
+  - <options=hide><speed=30>Perplexed, <pause=.5>are you?<options=next>
+  - "<options=hide><speed=30>You\u2019ll learn.<options=next>"
+  - <options=hide><speed=30>We all do, <pause=.5>through life, <pause=.5>through
+    death, <pause=.5>through the in-between places<speed=3> . . .<options=next>
+  - <options=hide><speed=30>Take comfort in the knowledge that everything is mutable.
+    <pause=.9>Within the void, <pause=.5>we must find the light within ourselves.
+    <pause=.9>We are the universe remember? <pause=.9>Change is at our will.<options=next>
+  - <options=hide><speed=30>And what did your dearest ones call you? <pause=.9>How
+    shall we address you in this shared reality?<options=name>
