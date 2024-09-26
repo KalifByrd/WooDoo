@@ -32,11 +32,12 @@ WooDoo is currently in the early stages of development. This demo serves as a pr
    - [Download the Demo (v2) - Scenic Demo](https://toxicteddie.com/Demos/WooDoo/)
 
 2. **Controls:**
-   - **Movement:** WASD or Arrow Keys
-   - **Interact:** E
-   - **Inventory:** I
-   - **Place Item:** Click on the desired location
-   - **Exit Game:** Esc
+   - **Movement:** WASD
+   - **Swimming:** Swim to an edge and quickly press Space Bar to get out.
+   - **Interact:** X
+   - **Inventory:** E
+   - **Place Item:** Click on item in inventory, press the place button, drag where you want to place, then press P to place.
+   - **Exit Game:** Settings button (top left)
 
 3. **Tips:**
    - Explore the islands and gather resources to begin crafting.
