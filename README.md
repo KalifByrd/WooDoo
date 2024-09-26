@@ -28,8 +28,8 @@ WooDoo is currently in the early stages of development. This demo serves as a pr
 ## 📥 **How to Play**
 
 1. **Download and Install:**
-   - [Download the Demo (v1) - Gameplay Demo](#)
-   - [Download the Demo (v2) - Scenic Demo](#)
+   - [Download the Demo (v1) - Gameplay Demo](https://toxicteddie.com/Demos/WooDoo/)
+   - [Download the Demo (v2) - Scenic Demo](https://toxicteddie.com/Demos/WooDoo/)
 
 2. **Controls:**
    - **Movement:** WASD or Arrow Keys
